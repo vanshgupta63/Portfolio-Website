@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vansh Gupta - Developer port</title>
+    
+
+<!-- CSS PART -->
+
+<style>
+      
+    * {
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root {
+  --bg-color: #0f0f0f;
+  --neon-cyan:#00fff0;
+  --neon-magenta:#ff2d95;
+  --neon-purple:#8e3fd8;
+  --muted: rgba(255,255,255,0.06);
+  --card: rgba(57, 57, 133, 0.55);
+  --glass: rgba(255,255,255,0.06);
+  --text-color: #ffffff;
+  --card-bg: #1e1e1e;
+  --section-bg: rgb(14 14 14 / 60%);
+  --accent-color: purple;
+  --text: #e6f7ff;
+}
+
+ *{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth}
+
+      @keyframes bgShift{
+        0%{background-position:0% 0%,100% 100%,0% 0%}
+        50%{background-position:10% 20%,90% 80%,100% 100%}
+        100%{background-position:0% 0%,100% 100%,0% 0%}
+      }
+
+.light-mode {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f0f0f0;
+  --section-bg: #f9f9f9;
+  --accent-color: #6a0dad;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  height: 80px;
+  gap:12px;
+  padding:14px 60px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+  background-color: var(--card-bg);
+}
+
+nav .right ul{display:flex;gap:12px;align-items:center}
+      nav .right ul li{list-style:none}
+      nav .right ul li a{
+        text-decoration:none;
+        font-weight:600;
+        padding:6px 7px;
+        position:relative;
+        transition:color .18s, transform .18s;
+      }
+      nav .right ul li a::after{
+        content:"";
+        position:absolute;
+        left:0;bottom:-6px;
+        height:3px;width:0%;
+        background:linear-gradient(90deg,var(--neon-cyan),var(--neon-magenta),var(--neon-purple));
+        filter:blur(7px);
+        transition:width .32s;
+        border-radius:2px;
+      }
+      nav .right ul li a:hover{color:var(--neon-purple);transform:translateY(-2px)}
+      nav .right ul li a:hover::after{width:100%}
+
+      #modeToggle{
+        cursor:pointer;
+        border-radius:20px;
+        padding:8px 14px;
+        border:1px solid rgba(255,255,255,0.04);
+        background:linear-gradient(90deg, rgba(163, 140, 194, 0.9), rgba(0,255,240,0.08));
+        color:white;
+        font-weight:700;
+        box-shadow:0 6px 24px rgba(124,42,232,0.12);
+      }
+
+
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  margin: 0 23px;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+
+nav ul li a:hover {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}
+
+#modeToggle {
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  background: var(--accent-color);
+  color: white;
+  transition: 0.3s;
+}
+
+#modeToggle:hover {
+  background: rgb(107, 18, 179);
+}
+
+.first{
+        min-height:640px;
+        display:flex;
+        gap:24px;
+        justify-content:space-evenly;
+        align-items:center;
+        padding:40px 28px;
+}
+
+  
+.left {
+   font-weight:600;
+   font-size:1.40rem;
+   color:var(--neon-magenta);
+   text-shadow:0 0 10px rgba(113, 86, 148, 0.9), 0 0 28px rgba(142,63,216,0.18);
+   letter-spacing:0.15px;
+}
+
+
+.leftSection{
+        width:30%;
+        font-size:2.2rem;
+        line-height:1.12;
+}
+.leftSection .purple{
+        color:var(--neon-purple);
+        text-shadow:0 0 12px rgba(178, 82, 197, 0.95), 0 0 30px rgba(142,63,216,0.2);
+        animation: neonFlicker 3.6s infinite;
+}
+
+@keyframes neonFlicker{
+        0%,100%{text-shadow:0 0 12px rgba(249, 86, 255, 0.9), 0 0 28px rgba(124,42,232,0.18);opacity:1}
+        40%{text-shadow:0 0 4px rgba(255, 100, 247, 0.6);opacity:.92}
+        70%{text-shadow:0 0 18px rgb(195, 45, 255),0 0 36px rgba(124,42,232,0.28);opacity:1}
+}
+
+
+.rightSection{width:30%;display:flex;justify-content:center;align-items:center}
+      .rightSection img.admin{
+        width:350px;height:350px;border-radius:909px;object-fit:cover;
+        border:4px solid rgba(255,45,149,0.12);
+        box-shadow:0 20px 70px rgba(124,42,232,0.18),0 0 50px rgba(78, 40, 59, 0.06);
+        animation: floatY 3s ease-in-out infinite;
+      }
+      @keyframes floatY{
+        0%{transform:translateY(0) rotate(-1deg)}
+        50%{transform:translateY(-14px) rotate(1deg)}
+        100%{transform:translateY(0) rotate(-1deg)}
+      }
+
+
+.purple {
+  color: var(--accent-color);
+}
+
+#element, .firstSection :nth-child(2) {
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 20px;
+  margin: 18px 0;
+}
+
+
+.second,.third,.fourth{
+        margin:28px 24px;padding:44px;border-radius:12px;
+        background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
+        border:1px solid rgba(124,42,232,0.06);
+        box-shadow:0 8px 30px rgba(0,0,0,0.55);
+}
+
+.about,.skills,.experience,.projects{
+        font-size:1.9rem;font-weight:700;margin-bottom:20px;color:var(--neon-purple);
+        text-shadow:0 0 10px rgba(146, 109, 172, 0.36);
+}
+
+.about {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 40px;
+  color: var(--accent-color);
+}
+
+.third {
+  padding: 50px;
+  background-color: var(--section-bg);
+  text-align: center;
+}
+
+.skills {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: var(--accent-color);
+}
+
+.skillsBox{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:18px;
+        padding:12px;
+      }
+
+.skillsBox {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  gap: 20px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+}
+
+.skillsBox > div {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  text-transform: capitalize;
+  border: 2px solid rgb(177, 87, 196);
+  transition: 0.3s;
+  transition:transform .28s,box-shadow .28s;
+  position:relative;
+  overflow:hidden;
+}
+
+.skillsBox>div:hover{
+  transform:translateY(-8px);
+  box-shadow:0 12px 40px rgba(142,63,216,0.12)
+}
+.skillsBox img{
+  width:58px;
+  height:58px;
+  border-radius:8px;
+  margin:8px;
+  filter:drop-shadow(0 6px 20px rgba(124,42,232,0.12))
+}
+
+.skillsBox > div:hover {
+  background-color: var(--section-bg);
+  color: var(--text-color);
+  transform: scale(1.04);
+}
+
+.css img,
+.Django img,
+.php img,
+.mongodb img,
+.python img,
+.javascript img,
+.html img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin: 8px;
+}
+
+
+.projectsBox{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+        gap:22px;padding:12px;
+      }
+.project{
+        background:var(--card);
+        padding:20px;border-radius:14px;
+        border:1px solid rgba(124,42,232,0.06);
+        transition:transform .25s,box-shadow .25s;
+      }
+.project:hover{
+        transform:translateY(-10px);
+        box-shadow:0 14px 50px rgba(124,42,232,0.14)
+      }
+.project strong{
+        color: #00bcd4;
+        text-shadow:0 0 10px rgba(147, 53, 255, 0.28);
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+.projects {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: var(--accent-color);
+}
+
+.projectsBox {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  background-color: var(--card-bg);
+}
+
+.project {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid rgb(248, 4, 223);
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: scale(1.05);
+  background-color: var(--section-bg);
+  color: var(--text-color);
+}
+
+.project img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.project div {
+  font-size: 1rem;
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  transition: 0.3s;
+}
+
+
+.view-btn {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.view-btn{
+        display:inline-block;background:linear-gradient(90deg,var(--neon-magenta),var(--neon-purple));
+        color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.04);
+        box-shadow:0 8px 30px rgba(124,42,232,0.12);
+      }
+      .view-btn:hover{transform:translateY(-4px);box-shadow:0 18px 60px rgba(142,63,216,0.22)}
+
+
+.view-btn:hover {
+  background-color: #8e3fd8;
+  transform: scale(1.05);
+}
+.admin{
+  border: 4px solid purple;
+  border-radius: 350px;
+}
+
+
+@media (max-width: 1024px) {
+  .leftSection {
+    font-size: 1.8rem;
+  }
+
+  .skillsBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projectsBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+  }
+
+  nav ul {
+    margin-top: 10px;
+  }
+
+  .first {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .leftSection {
+    font-size: 1.5rem;
+    margin: 20px 0;
+  }
+
+  .skillsBox {
+    grid-template-columns: 1fr;
+  }
+
+  .projectsBox {
+    grid-template-columns: 1fr;
+  }
+
+  .second p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul li a {
+    margin: 5px;
+    font-size: 0.9rem;
+  }
+
+  .left {
+    font-size: 1.2rem;
+  }
+
+  .skills,
+  .about,
+  .projects {
+    font-size: 1.5rem;
+  }
+
+  .skillsBox img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .first {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    height: auto;
+  }
+
+  .leftSection, .rightSection {
+    width: 90%;
+    margin: 30px 0;
+    font-size: 45px;
+  }
+
+  .rightSection img {
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .leftSection p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leftSection {
+    font-size: 1.2rem;
+  }
+  
+  .leftSection p {
+    font-size: 0.9rem;
+  }
+  
+  .rightSection img {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) { 
+  nav ul li a {
+    margin: 0 15px;
+    }
+  }
+@media (max-width: 600px) { 
+  .left {
+    font-size: 1.5rem;
+    margin: 30px 0px 8px 0px;
+    
+    }
+  }
+  @media (max-width: 600px) {
+  nav {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: auto;
+    padding: 10px;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 5px 8px;
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  #modeToggle {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    margin-left: 10px;
+  }
+}
+
+.contact {
+    margin: 28px 24px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.008));
+    border: 1px solid rgba(124, 42, 232, 0.06);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+    color: var(--text-color);
+    transition: background 0.3s 
+ease, color 0.3s 
+ease, box-shadow 0.3s 
+ease;
+}
+.contact-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 50px 10%;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  flex-wrap: wrap;
+  width: 93%;
+  margin: 50px;
+}
+
+.contact-left {
+  flex: 1;
+  margin: 40px;
+}
+
+.contact-left h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: purple;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 0 12px rgba(142, 63, 216, 0.5), 0 0 25px rgba(124, 42, 232, 0.25);
+}
+
+.email {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.email i {
+  color: purple ;
+  margin-right: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  margin-right: 20px;
+  font-size: 1.5rem;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff0057;
+}
+
+.btn {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--neon-magenta), var(--neon-purple));
+  color: #fff;
+  border: none;
+  padding: 12px 35px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.contact-right {
+  flex: 1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+input, textarea {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid rgba(124, 42, 232, 0.12);
+    outline: none;
+    padding: 15px;
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: background 0.3s 
+ease, color 0.3s 
+ease;
+}
+
+
+.submit-btn {
+  background: linear-gradient(90deg, var(--neon-magenta), var(--neon-purple));
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-start;
+    font-weight: 600;
+    transition: transform 0.2s 
+ease, box-shadow 0.3s 
+ease;
+    width: fit-content;
+}
+
+footer {
+      background: var(--card-bg);
+  color: purple;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+footer i,
+footer span,
+footer p {
+  color: purple;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contact-left h1{
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .contact-left .email{
+    text-align: center;
+  }
+  .contact-left {
+    width: 80%;
+  }
+  .contact-right {
+    width: 100%;
+  }
+
+  .btn, .submit-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1000px) {
+  form{
+    margin: 30px;
+  }
+  .contact-container {
+    gap: 0px;
+    margin: 20px;
+  }
+}
+
+/* EXPERIENCE SECTION STYLING */
+.experience {
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 60px 8%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.experience .title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--accent-color);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.experience .title::after {
+  content: '';
+  display: none;
+  width: 80px;
+  height: 3px;
+  background: var(--accent-color);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.experience-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 20px 0px 50px 0px;
+}
+
+.experience-box {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.experience-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.2);
+   border-color: var(--accent-color);
+}
+
+.experience-box h3 {
+  font-size: 1.3rem;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.experience-box .duration {
+  font-size: 0.95rem;
+  color: var(--subtext-color);
+  margin-bottom: 15px;
+}
+
+.experience-box p {
+  font-size: 0.99rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.view-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  border: 1px solid #00bcd4;
+  padding: 10px 18px;
+  border-radius: 9px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  background: #2bbcf5;
+  color: #0f0f0f;
+}
+
+
+
+footer {
+  background: var(--card-bg);
+  color: purple;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .social-icons{
+    margin: 20px 20px 24px 74px;
+    display: block;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+  }
+
+  }
+  .contact-left .email{
+    text-align: center;
+  }
+  .contact-left {
+    width: 80%;
+    flex: 1;
+    margin: 25px;
+
+  }
+  .contact-right {
+    width: 100%;
+    
+  }
+
+  .btn{
+    width: 80%;
+    text-align: center;
+    display: block;
+    margin: auto;
+  }
+  .submit-btn {
+    width: 40%;
+    text-align: center;
+    display: block;
+    margin: auto;
+  }
+  .social-icons{
+    margin: auto;
+    text-align: center;
+  }
+
+
+@media (max-width: 714px) {
+    .social-icons{
+    margin: 20px 20px 24px 70px;
+    width: 70%;
+  }
+}
+@media (max-width: 650px) {
+    .social-icons{
+    margin: 20px 20px 24px 70px;
+    width: 70%;
+  }
+}
+
+@media (max-width: 550px) {
+    .social-icons{
+    margin: 2px 20px 24px 40px;
+    width: 100%;
+  }
+}
+@media (max-width: 957px) {
+    nav{
+      padding: 14px 30px;
+    }
+    
+}
+@media (max-width: 1180px) {
+   nav ul li a {
+  margin: 0 5px;
+  color: var(--text-color);
+}
+
+}
+
+@media (max-width: 942px) {
+  .social-icons {
+    width: 80%;
+}
+  }
+@media (max-width: 1000px) {
+  form{
+    margin: 30px;
+  }
+  .social-icons {
+    width: 80%;
+}
+  .contact-container {
+    gap: 0px;
+    margin: 20px;
+  }
+}
+
+.social-icons img {
+  width: 40px;          
+  height: 40px;
+  object-fit: contain;  
+  border-radius: 50%;      
+
+  margin: 10px 0px 30px 0px;     
+  box-shadow: 0 2px 10px rgba(45, 139, 177, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.15);   
+  box-shadow: 0 0 20px rgba(142, 63, 216, 0.4),
+              0 0 15px rgba(255, 45, 149, 0.3);
+}
+
+.btn,
+.submit-btn {
+  transition: all 0.25s ease;
+  box-shadow: none;
+}
+
+.btn:hover,
+.submit-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(142, 63, 216, 0.4),
+              0 0 18px rgba(255, 45, 149, 0.3);
+}
+
+#msg{
+  color: rgb(16, 172, 68);
+  margin-top: 17px;
+  display: block;
+  font-weight: 900;
+
+  color: rgb(16, 172, 68);
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 1px;
+
+}
+
+</style>
+
+<!-- END CSS -->
+
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="left">
+                <span class="purple">Vansh Portfolio</span>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experiences">Experiences</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact Me</a></li>
+                </ul>
+                
+            </div>
+            <button id="modeToggle">🌙 Dark Mode&nbsp;</button>
+        </nav>
+    </header>
+    <main>
+        <section class="first" id="main">
+            <div class="leftSection">Hello, I'm <span class="purple"> Vansh Gupta </span> From Lucknow.
+            <br><br><div>And I'm a <span class="purple" id="element"></span></div>
+            </div>
+            <div class="rightSection">
+                <img src="Profile Image.jpeg" class="admin">
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="second" id="about">
+            <div class="about">About Me</div>
+            <p> I'm Vansh Gupta, currently pursuing a Bachelor of Technology (B.tech) at Dr. APJ Abdul Kalam Technical University (AKTU), with a strong passion for becoming a Software Engineer.<br><br>
+
+I have hands-on experience in Python programming and full-stack web development using the MERN stack (MongoDB, Express.js, React.js, Node.js). <br><br> I enjoy designing responsive, user-friendly applications and solving real-world problems through code. <br><br>
+I have worked on Frontend Technologies (HTML5, CSS3, BootStraps, Javascript, Python and other PY libraries) and Backend Technologies (Django and Node.js) for almost a year and had done several projects.<br><br>
+
+Skillful in java, Data Structure and CS Fundamentals with hands on experience on web development tools.<br><br>
+
+Aspiring for a challenging career in Software Development as to use my learned skills and experience for best results.<br><br>
+</p>
+<hr>
+
+        </section>
+
+<section class="experience" id="experiences">
+  <div class="title">Experiences</div>
+
+  <div class="experience-container">
+
+    <div class="experience-box">
+      <h3>Python Development Intern: <br><br>~ Codveda Technologies</h3>
+      <p class="duration"> April to May 2025</p>
+      <p>I've had the incredible opportunity to work on real-world projects, strengthen my Python skills, and contribute to a fast-paced, innovation-driven environment. From tackling debugging challenges to optimizing code for efficiency, every task was a chance to grow and learn. <br><br>
+        Gained hands-on experience in developing and maintaining projects. Worked on various aspects of web development, including UI/UX design, coding, testing, and debugging. 
+      </p>
+      <a href="https://www.linkedin.com/posts/vansh-gupta-4015302a4_internshipexperience-codvedainternship-pythondeveloper-activity-7331168198014197761-v5M9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAElnsUEBt72-XOBOBguw9UAvxure9fMr5Ow" class="view-btn">🔗 View Completion Certificate</a>
+    </div>
+
+    <div class="experience-box">
+      <h3>MERN Stack Development Intern:<br><br> ~ CODTECH IT Solutions Pvt. Ltd.</h3>
+      <p class="duration">June to August 2025</p>
+      <p>
+        My learning journey – the successful completion of my June - August MERN Stack Web Development Internship at CODTECH IT SOLUTIONS Private Limited. <br><br>
+        This experience wasn’t just about coding – it was about solving real challenges, thinking creatively, and growing as a problem-solver. I had the opportunity to work on meaningful projects, sharpen my technical skills, and gain valuable insights into modern web technologies.
+      </p>
+      <a href="https://www.linkedin.com/posts/vansh-gupta-4015302a4_mernstack-webdevelopment-internshipjourney-activity-7364963828863811584-UCbP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAElnsUEBt72-XOBOBguw9UAvxure9fMr5Ow" class="view-btn">🔗 View Completion Certificate</a>
+    </div>
+
+    
+
+  </div>
+
+  <hr>
+</section>
+
+    <section class="third" id="skills">
+        <div class="skills">
+            Skills
+        </div>
+        <div class="skillsBox">
+            <div class="html">
+                <img src="https://imagedelivery.net/5MYSbk45M80qAwecrlKzdQ/51703b85-ef3f-4d45-fae0-c39d4c733900/preview" alt="">
+                <div>
+                    I have a solid understanding of HTML and use it as the foundation for building clean, well-structured, and responsive web pages. I can create semantic layouts, manage elements efficiently, and ensure accessibility and SEO-friendly code. HTML is the core of all my web projects
+                </div>
+            </div>
+            <div class="css">
+                <img src="https://image.pngaaa.com/311/3920311-middle.png" alt="">
+                <div>I use CSS to style and bring life to my web pages. From layouts and animations to responsive designs, I make sure that every project looks visually appealing across all devices while maintaining clean and organized code.</div>
+            </div>
+            <div class="javascript">
+                <img src="https://static.vecteezy.com/system/resources/previews/027/127/463/original/javascript-logo-javascript-icon-transparent-free-png.png" alt="">
+                <div>I use JavaScript to add interactivity and dynamic functionality to my websites. I’m comfortable working with DOM manipulation, event handling, and API integration to create smooth user experiences.</div>
+            </div>
+            <div class="php">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.Lh2UX3vO-iJnztizWQrn3AHaD4?cb=12ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="">
+                <div>I use PHP to develop dynamic and data-driven web applications. I’m familiar with handling form data, server-side logic, and integrating databases to create functional and scalable websites.</div>
+            </div>
+            <div class="python">
+                <img src="https://logodix.com/logo/729331.png" alt="">
+                <div>I have a strong grasp of Python programming, using it for backend logic, automation, and data handling. I enjoy writing clean, efficient, and reusable code to solve real-world problems.</div>
+            </div>
+            <div class="Django">
+                <img src="https://www.vhv.rs/dpng/d/208-2081416_django-development-png-transparent-django-logo-png-download.png" alt="">
+                <div>I work with Django to build secure and maintainable backend systems. I can manage models, views, and templates efficiently, and use Django’s features to speed up development and ensure reliability.</div>
+            </div>
+            <div class="mongodb" style="margin-bottom: 10px;">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.AoFmhuVcQWFwCx4G2ZnuJQHaIq?cb=12ucfimg=1&w=500&h=585&rs=1&pid=ImgDetMain&o=7&rm=3" alt="">
+                <div>I use MongoDB as my database solution for handling large and flexible datasets. I’m comfortable performing CRUD operations, designing schemas, and integrating MongoDB with Node.js for full-stack applications.</div>
+            </div>
+        </div>
+        <hr>
+    </section>
+
+    <section class="fourth" id="projects">
+    <div class="projects">Projects</div>
+    <div class="projectsBox">
+        <div class="project">
+            <div>
+                <div><strong>VROCK (Personal Virtual - Assistant)</strong></div><br>
+                A smart AI-based Personal Virtual-Assistant built using Frontend & JavaScript that can respond to user queries in real-time.
+                <br><br>
+                <a href="https://github.com/vanshgupta63/virtual-assistant.git" class="view-btn">🔗 View Project</a>
+            </div>
+        </div>
+        <div class="project">
+            <div>
+                <div><strong>VROCK Spotify</strong></div><br>
+                Making a personal Spotify player with HTML, CSS, and JavaScript involves using handle music playback and user interactions like play, pause, and skipping songs.
+                <br><br>
+                <a href="https://github.com/vanshgupta63/vrock-spotify.git" class="view-btn" target="_blank">🔗 View Project</a>
+            </div>
+        </div>
+        <div class="project">
+            <div>
+                <div><strong>Weather Application </strong></div><br>
+                A MERN stack weather application using OpenWeatherMap API involves a React for user interaction, an Express.js backend to handle requests and securely fetch Weather data.
+                <br><br>
+                <a href="https://github.com/vanshgupta63/Weather-Application.git" class="view-btn" target="_blank">🔗 View Project</a>
+            </div>
+        </div>
+        <div class="project">
+            <div>
+                <div><strong>Real-Time Chat Application</strong></div><br>
+                A real-time chat application built with the MERN stack uses the JavaScript-based components of MongoDB, Express, React, and Node.js to provide seamless, instantaneous communication.
+                <br><br>
+                <a href="https://github.com/vanshgupta63/REAL-TIME-CHAT-APPLICATION-.git" class="view-btn" >🔗 View Project</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+</section>
+
+
+<section class="contact" id="contact">
+    <div class="contact-container">
+      <div class="contact-left">
+        <h1>Contact Me</h1>
+
+       <div class="social-icons">
+           <a href="https://www.linkedin.com/in/vansh-gupta-4015302a4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+            <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png" alt="" class="fab fa-linkedin"></a>
+
+           <a href="https://github.com/vanshgupta63">
+            <img src="https://images.icon-icons.com/3685/PNG/512/github_logo_icon_229278.png" alt="" class="fab fa-twitter"></a>
+
+           <a href="https://www.instagram.com/vnc_vansh_03/">
+            <img src="https://p7.hiclipart.com/preview/477/609/118/logo-computer-icons-clip-art-instagram-logo.jpg" alt="" class="fab fa-instagram" ></a>
+        </div>
+        <a href="Vansh Gupta_Resume.pdf" download="VanshGupta_Resume.pdf" class="btn">Download Resume</a>
+      </div>
+
+      <div class="contact-right">
+        <form name="submit-to-google-sheet">
+          <input type="text" name="Name" placeholder="Your Name" required>
+          <input type="email" name="Email" placeholder="Your Email" required>
+          <textarea name="Message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn submit-btn">Submit</button>
+        </form>
+        <span id="msg"></span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Copyright © Vansh . ❤️ Made with Easy Tutorials</p>
+  </footer>
+
+
+    </main>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+     <script>
+    var typed = new Typed('#element', {
+      strings: [ 'MERN Stack Developer.' , 'Python Developer.' , 'Web Designer.' , ' Backend Developer.'],
+      typeSpeed: 50,
+    });
+    const toggleBtn = document.getElementById('modeToggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if (document.body.classList.contains('light-mode')) {
+                toggleBtn.textContent = "🌞 Light Mode";
+            } else {
+                toggleBtn.textContent = "🌙 Dark Mode";
+            }
+        });
+  </script>
+  
+  <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyDj7DF5FnuGioYhQsDeo7GREPecaXvPCRYzPeF-D15XxdKY5AifPDnsmiyQUdugka-/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg");
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        msg.innerHTML = "Message  sent  successfully ✅";
+        setTimeout(function(){
+          msg.innerHTML = "";
+        },4000);
+        form.reset();
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+</body>
+</html>
